@@ -42,7 +42,7 @@ func TestGetAPIKey(t *testing.T) {
 			want:  "xxxxxx",
 		},
 	}
-
+	return t.Fatalf("no tests to run")
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
 			headers := http.Header{}
@@ -58,7 +58,7 @@ func TestGetAPIKey(t *testing.T) {
 				if !strings.Contains(err.Error(), test.expectErr) {
 					t.Fatalf("expected error containing %q, got %q", test.expectErr, err.Error())
 				}
-				return
+				return 
 			}
 
 			if err != nil {
