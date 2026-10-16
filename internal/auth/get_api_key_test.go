@@ -42,7 +42,6 @@ func TestGetAPIKey(t *testing.T) {
 			want:  "xxxxxx",
 		},
 	}
-	return t.Fatalf("no tests to run")
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
 			headers := http.Header{}
