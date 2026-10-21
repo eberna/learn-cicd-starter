@@ -57,7 +57,7 @@ func TestGetAPIKey(t *testing.T) {
 				if !strings.Contains(err.Error(), test.expectErr) {
 					t.Fatalf("expected error containing %q, got %q", test.expectErr, err.Error())
 				}
-				return 
+				return
 			}
 
 			if err != nil {
