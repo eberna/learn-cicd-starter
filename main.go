@@ -30,10 +30,16 @@ func main() {
 		log.Printf("warning: assuming default configuration. .env unreadable: %v", err)
 	}
 
-	port := os.Getenv("PORT")
+	rawPort := os.Getenv("PORT")
 	if port == "" {
 		log.Fatal("PORT environment variable is not set")
 	}
+	cleanStr := strings.TrimSpace(rawPort)
+	port, err := strconv.Atoi(cleanStr)
+	if err != nil {
+		log.Fatal("PORT environment variable invalid")
+	}
+
 
 	apiCfg := apiConfig{}
 
@@ -91,6 +97,7 @@ func main() {
 	srv := &http.Server{
 		Addr:    ":" + port,
 		Handler: router,
+		ReadHeaderTimeout: 10,
 	}
 
 	log.Printf("Serving on port: %s\n", port)
