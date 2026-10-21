@@ -7,6 +7,9 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
+	"strconv"
+
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
@@ -31,7 +34,7 @@ func main() {
 	}
 
 	rawPort := os.Getenv("PORT")
-	if port == "" {
+	if rawPort == "" {
 		log.Fatal("PORT environment variable is not set")
 	}
 	cleanStr := strings.TrimSpace(rawPort)
