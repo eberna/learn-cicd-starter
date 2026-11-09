@@ -7,9 +7,8 @@ import (
 	"log"
 	"net/http"
 	"os"
-	"strings"
 	"strconv"
-
+	"strings"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
@@ -42,7 +41,6 @@ func main() {
 	if err != nil {
 		log.Fatal("PORT environment variable invalid")
 	}
-
 
 	apiCfg := apiConfig{}
 
@@ -98,8 +96,8 @@ func main() {
 
 	router.Mount("/v1", v1Router)
 	srv := &http.Server{
-		Addr:    ":" + strconv.Itoa(port),
-		Handler: router,
+		Addr:              ":" + strconv.Itoa(port),
+		Handler:           router,
 		ReadHeaderTimeout: 10,
 	}
 
