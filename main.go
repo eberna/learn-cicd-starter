@@ -98,11 +98,11 @@ func main() {
 
 	router.Mount("/v1", v1Router)
 	srv := &http.Server{
-		Addr:    ":" + string(port),
+		Addr:    ":" + strconv.Itoa(port),
 		Handler: router,
 		ReadHeaderTimeout: 10,
 	}
 
-	log.Printf("Serving on port: %s\n", port)
+	log.Printf("Serving on port: %d\n", port)
 	log.Fatal(srv.ListenAndServe())
 }
