@@ -9,6 +9,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
@@ -98,7 +99,7 @@ func main() {
 	srv := &http.Server{
 		Addr:              ":" + strconv.Itoa(port),
 		Handler:           router,
-		ReadHeaderTimeout: 10,
+		ReadHeaderTimeout: 10 * time.Second,
 	}
 
 	log.Printf("Serving on port: %d\n", port)
